@@ -47,6 +47,8 @@ impl<T> RefCell<T> {
   }
 }
 
+// Shared reference data type container to be
+// able to decrement reference counting state when it's dropped.
 pub struct Ref<'ref_cell, T> {
   refcell: &'ref_cell RefCell<T>,
 }
@@ -82,7 +84,8 @@ impl<'ref_cell, T> Deref for Ref<'ref_cell, T> {
   }
 }
 
-// Exclusive reference
+// Exclusive reference data type container to be
+// able to decrement reference counting state when it's dropped.
 pub struct RefMut<'ref_cell, T> {
   refcell: &'ref_cell RefCell<T>,
 }
